@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { ContextProvider } from "./Context/ContextProvider";
+import styles from "./App.module.scss";
+import { Route, Routes } from "react-router-dom";
+import Home from "./Pages/Home";
+import Dashboard from "./Pages/Dashboard";
+import Checkout from "./Pages/Checkout";
+import Payment from "./Pages/Payment";
+import Register from "./Pages/Register";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className={styles.background}>
+      <header>
+        <ContextProvider>
+          <Routes>
+            <Route path="/" element={<Home />}></Route>
+            <Route path="/dashboard" element={<Dashboard />}></Route>
+            <Route path="/register" element={<Register />}></Route>
+            <Route path="/checkout" element={<Checkout />}></Route>
+            <Route path="/payment" element={<Payment />}></Route>
+          </Routes>
+        </ContextProvider>
       </header>
     </div>
   );
-}
+};
 
 export default App;
